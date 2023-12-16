@@ -25,32 +25,52 @@ inThisBuild(List(
   versionScheme := Some("semver-spec"),
 ))
 
-lazy val root = project.in(file(".")).aggregate(tests)
+lazy val root = crossProject(JSPlatform, JVMPlatform, NativePlatform)
+  .in(file("."))
+  .aggregate(cats, scala)
+  .enablePlugins(NoPublishPlugin)
+  .jsSettings(test := {})
+  .nativeSettings(test := {})
+  .settings(test :=
+    Def.sequential(
+      (cats.jvm / Test / test),
+      (scala.jvm / Test / test)
+    ).value
+  )
 
 lazy val cats = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("modules/cats"))
   .settings(
     name := "destructured-cats",
     libraryDependencies ++= Seq(
-      "org.typelevel" %%% "cats-core" % "2.10.0"
+      "org.typelevel" %%% "cats-core" % "2.10.0",
+      "org.scalameta" %%% "munit"     % "0.7.29"  % Test
     )
   )
+  .jsSettings(test := {})
+  .nativeSettings(test := {})
+
 
 lazy val scala = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("modules/scala"))
   .settings(
     name := "destructured-scala",
-  )
-
-lazy val tests = project.in(file("modules/tests"))
-  .settings(
-    name := "destructured-tests",
     libraryDependencies ++= Seq(
-      "org.scalameta" %% "munit" % "0.7.29" % Test
+      "org.scalameta" %%% "munit"     % "0.7.29"  % Test
     )
   )
-  .dependsOn(cats.jvm, scala.jvm)
-  .enablePlugins(NoPublishPlugin)
+  .jsSettings(test := {})
+  .nativeSettings(test := {})
+
+// lazy val tests = project.in(file("modules/tests"))
+//   .settings(
+//     name := "destructured-tests",
+//     libraryDependencies ++= Seq(
+//       "org.scalameta" %% "munit" % "0.7.29" % Test
+//     )
+//   )
+//   .dependsOn(cats.jvm, scala.jvm)
+//   .enablePlugins(NoPublishPlugin)
 
 lazy val docs = project.in(file("docs/gitignored"))
   .settings(
