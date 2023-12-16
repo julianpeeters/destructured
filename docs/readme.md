@@ -22,7 +22,7 @@ val a: Some[Int] = Some(1)
 val b: Option[String] = f(a).pure("foo")
 ```
 
-<small>(for a more realistic example, see the [dynamical](https://github.com/julianpeeters/dynamical) library)</small>
+<small>(Note: For a more realistic example, see the [dynamical](https://github.com/julianpeeters/dynamical) library)</small>
 
 
 ## `destructured-cats`
@@ -64,7 +64,10 @@ val fb: Option[Int] = f(fa).map(fa)(_ + 1)
 "com.julianpeeters" %% "destructured-scala" % "@VERSION@"
 ```
 
-The following constructors are supported:
+`CtorOf` can be compared to scala's built-in `ValueOf`, a
+typeclass that provides values for singleton types like `None.type`.
+
+##### Supported Types:
 
 | Option | Either   | 
 | :---:  |  :---:   | 
