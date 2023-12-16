@@ -2,10 +2,6 @@
 
 Common typeclasses and constructors, but parameterized by `A` instead of `F[_]`
 
-### Libraries for Scala 3 (JS, JVM, and Native platforms)
- - [`destructured-cats`](#destructured-cats): typeclasses of the underlying functor, e.g., `Applicative[Option]`
- - [`destructured-scala`](#destructured-scala): typeclass-based constructors of underlying data type, e.g., `Some[T]`
-
 #### Why?
 
 This library can be useful if your model uses subtypes in its definition.
@@ -26,14 +22,18 @@ val b: Option[String] = f(a).pure("foo")
 
 <small>(Note: For a more realistic example, see the [dynamical](https://github.com/julianpeeters/dynamical) library)</small>
 
+### Libraries for Scala 3 (JS, JVM, and Native platforms)
+ - [`destructured-cats`](#destructured-cats): typeclasses of the underlying functor, e.g., `Applicative[Option]`
+ - [`destructured-scala`](#destructured-scala): typeclass-based constructors of underlying data type, e.g., `Some[T]`
+
 
 ## `destructured-cats`
 
 ```scala
-"com.julianpeeters" %% "destructured-cats" % "0.1.0"
+"com.julianpeeters" %% "destructured-cats" % "0.1.1"
 ```
 
-Supported types: `Applicative[Option]`, `Functor[Option]`, `// TODO`
+Supported types: `Applicative[Option]`, `Functor[Option]`
 
 ##### Examples:
 
@@ -67,7 +67,7 @@ val fb: Option[Int] = f(fa).map(fa)(_ + 1)
 ## `destructured-scala`
 
 ```scala
-"com.julianpeeters" %% "destructured-scala" % "0.1.0"
+"com.julianpeeters" %% "destructured-scala" % "0.1.1"
 ```
 
 `CtorOf` can be compared to scala's built-in `ValueOf`, a
