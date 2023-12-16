@@ -34,19 +34,13 @@ lazy val cats = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-core" % "2.10.0"
     )
-  ).dependsOn(core)
-
-lazy val core = crossProject(JSPlatform, JVMPlatform, NativePlatform)
-  .in(file("modules/core"))
-  .settings(
-    name := "destructured-core",
   )
 
 lazy val scala = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("modules/scala"))
   .settings(
     name := "destructured-scala",
-  ).dependsOn(core)
+  )
 
 lazy val tests = project.in(file("modules/tests"))
   .settings(
@@ -55,7 +49,7 @@ lazy val tests = project.in(file("modules/tests"))
       "org.scalameta" %% "munit" % "0.7.29" % Test
     )
   )
-  .dependsOn(cats.jvm, core.jvm, scala.jvm)
+  .dependsOn(cats.jvm, scala.jvm)
   .enablePlugins(NoPublishPlugin)
 
 lazy val docs = project.in(file("docs/gitignored"))
@@ -66,6 +60,6 @@ lazy val docs = project.in(file("docs/gitignored"))
       "VERSION" -> version.value.takeWhile(_ != '+'),
     )
   )
-  .dependsOn(cats.jvm, core.jvm, scala.jvm)
+  .dependsOn(cats.jvm, scala.jvm)
   .enablePlugins(MdocPlugin)
   .enablePlugins(NoPublishPlugin)
