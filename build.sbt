@@ -31,12 +31,6 @@ lazy val root = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .enablePlugins(NoPublishPlugin)
   .jsSettings(test := {})
   .nativeSettings(test := {})
-  .settings(test :=
-    Def.sequential(
-      (cats.jvm / Test / test),
-      (scala.jvm / Test / test)
-    ).value
-  )
 
 lazy val cats = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("modules/cats"))
@@ -44,7 +38,7 @@ lazy val cats = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     name := "destructured-cats",
     libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-core" % "2.10.0",
-      "org.scalameta" %%% "munit"     % "0.7.29"  % Test
+      "org.scalameta" %%  "munit"     % "0.7.29"  % Test
     )
   )
   .jsSettings(test := {})
@@ -56,7 +50,7 @@ lazy val scala = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .settings(
     name := "destructured-scala",
     libraryDependencies ++= Seq(
-      "org.scalameta" %%% "munit" % "0.7.29"  % Test
+      "org.scalameta" %% "munit" % "0.7.29"  % Test
     )
   )
   .jsSettings(test := {})
