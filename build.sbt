@@ -56,21 +56,11 @@ lazy val scala = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .settings(
     name := "destructured-scala",
     libraryDependencies ++= Seq(
-      "org.scalameta" %%% "munit"     % "0.7.29"  % Test
+      "org.scalameta" %%% "munit" % "0.7.29"  % Test
     )
   )
   .jsSettings(test := {})
   .nativeSettings(test := {})
-
-// lazy val tests = project.in(file("modules/tests"))
-//   .settings(
-//     name := "destructured-tests",
-//     libraryDependencies ++= Seq(
-//       "org.scalameta" %% "munit" % "0.7.29" % Test
-//     )
-//   )
-//   .dependsOn(cats.jvm, scala.jvm)
-//   .enablePlugins(NoPublishPlugin)
 
 lazy val docs = project.in(file("docs/gitignored"))
   .settings(
