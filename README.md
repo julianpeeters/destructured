@@ -31,7 +31,7 @@ val b: Option[String] = f(a).pure("foo")
 ## `destructured-cats`
 
 ```scala
-"com.julianpeeters" %% "destructured-cats" % "0.0.0"
+"com.julianpeeters" %% "destructured-cats" % "0.1.0"
 ```
 
 Supported types: `Applicative[Option]`, `Functor[Option]`, `// TODO`
@@ -65,12 +65,10 @@ val fb: Option[Int] = f(fa).map(fa)(_ + 1)
 ```
 
 
-
-
 ## `destructured-scala`
 
 ```scala
-"com.julianpeeters" %% "destructured-scala" % "0.0.0"
+"com.julianpeeters" %% "destructured-scala" % "0.1.0"
 ```
 
 The following constructors are supported:
