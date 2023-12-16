@@ -3,9 +3,8 @@
 Common typeclasses and constructors, but parameterized by `A` instead of `F[_]`
 
 ### Libraries for Scala @SCALA@ (JS, JVM, and Native platforms)
- - [`destructured-cats`](#destructured-cats): typeclasses that provide cats typeclasses for the underlying functor, e.g., `Applicative[Option]`
- - [`destructured-scala`](#destructured-scala): typeclasses that provide the underlying data constructors of a type `A`, e.g., `Some[T]`
-
+ - [`destructured-cats`](#destructured-cats): typeclasses of the underlying functor, e.g., `Applicative[Option]`
+ - [`destructured-scala`](#destructured-scala): typeclass-based constructors of underlying data type, e.g., `Some[T]`
 
 #### Why?
 
