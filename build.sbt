@@ -31,12 +31,6 @@ lazy val root = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .enablePlugins(NoPublishPlugin)
   .jsSettings(test := {})
   .nativeSettings(test := {})
-  .settings(test :=
-    Def.sequential(
-      (cats.jvm / Test / test),
-      (scala.jvm / Test / test)
-    ).value
-  )
 
 lazy val cats = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("modules/cats"))
