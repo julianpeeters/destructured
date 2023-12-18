@@ -2,10 +2,10 @@
 
 Typeclasses that provide data constructors of `F[_]`, but parameterized by `A`
 instead of `F[_]`.
+
+### Add the dependency:
  - libarary for Scala 3 (JS, JVM, and Native platforms)
  
-### Add the dependency:
-
 ```scala
 "com.julianpeeters" %% "destructured" % "0.2.0"
 ```
