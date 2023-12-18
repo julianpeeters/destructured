@@ -1,26 +1,24 @@
 # destructured
 
-
-Typeclasses that provide data constructors of `F[_]`, parameterized by `A`
+Typeclasses that provide data constructors of `F[_]`, but parameterized by `A`
 instead of `F[_]`.
  - libarary for Scala 3 (JS, JVM, and Native platforms)
- - zero dependencies
-
+ 
 ### Add the dependency:
 
 ```scala
-"com.julianpeeters" %% "destructured" % "0.1.1"
+"com.julianpeeters" %% "destructured" % "0.2.0"
 ```
 
 ### Why?
 
 This library may be useful if your model uses subtypes in its definition.
 
-The `CtorOf` typeclass can be compared to scala's built-in `ValueOf`, a Scala
-built-in that provides values for singleton types:
- - `ValueOf` provides values like `None` for singleton types,
- - `CtorOf` provides constructors like `Some(_)` for parameterized types
+### How?
 
+The `CtorOf` typeclass is like `ValueOf`, but for constructors:
+ - Scala's `ValueOf` provides values like `None` for singleton types,
+ - here, `CtorOf` provides constructors like `Some(_)` for parameterized types
 
 ### Example:
 
@@ -40,11 +38,7 @@ val b: Some[Int] = f(a).apply(2)
 
 <small>(Note: For a more realistic example, see the [dynamical](https://github.com/julianpeeters/dynamical) library)</small>
 
-
 ### SupportedTypes:
-
-
-
 
 | Option | Either   | 
 | :---:  |  :---:   | 
