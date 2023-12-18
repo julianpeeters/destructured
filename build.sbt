@@ -27,28 +27,8 @@ inThisBuild(List(
 
 lazy val root = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   .in(file("."))
-  .aggregate(cats, scala)
-  .enablePlugins(NoPublishPlugin)
-  .jsSettings(test := {})
-  .nativeSettings(test := {})
-
-lazy val cats = crossProject(JSPlatform, JVMPlatform, NativePlatform)
-  .in(file("modules/cats"))
   .settings(
-    name := "destructured-cats",
-    libraryDependencies ++= Seq(
-      "org.typelevel" %%% "cats-core" % "2.10.0",
-      "org.scalameta" %%  "munit"     % "0.7.29"  % Test
-    )
-  )
-  .jsSettings(test := {})
-  .nativeSettings(test := {})
-
-
-lazy val scala = crossProject(JSPlatform, JVMPlatform, NativePlatform)
-  .in(file("modules/scala"))
-  .settings(
-    name := "destructured-scala",
+    name := "destructured",
     libraryDependencies ++= Seq(
       "org.scalameta" %% "munit" % "0.7.29"  % Test
     )
@@ -64,6 +44,6 @@ lazy val docs = project.in(file("docs/gitignored"))
       "VERSION" -> version.value.takeWhile(_ != '+'),
     )
   )
-  .dependsOn(cats.jvm, scala.jvm)
+  .dependsOn(root.jvm)
   .enablePlugins(MdocPlugin)
   .enablePlugins(NoPublishPlugin)
